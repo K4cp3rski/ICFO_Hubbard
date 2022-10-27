@@ -1,0 +1,51 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage[table,xcdraw,dvipsnames]{xcolor}
+\usepackage{hhline}
+\usepackage{placeins}
+\usepackage[margin=0.6in]{geometry}
+\usepackage{colortbl}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage[shortlabels]{enumitem}
+\usetikzlibrary{calc}
+
+\DeclareDocumentCommand{\hcancel}{mO{0pt}O{0pt}O{0pt}O{0pt}}{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    }%
+}%
+
+\newcommand{\pd}[1]{\partial_{#1}}
+
+\title{Hubbard Hamiltonian}
+\author{Kacper Cybiński}
+\newdate{date}{25}{08}{2022}
+\date{\displaydate{date}}
+% \date{\today}
+
+\begin{document}
+
+    \maketitle
+
+    \begin{abstract}
+        Following notes file is a detailed walkthrough of entry steps into many-body physics field I had at ICFO during my summer stay in the August of 2022. I outline here process of construction, and exact diagonaliation of Fermi- and Bose- Hubbard model, in variation of either one or two component bases, representing either spinful, or spinless systems.
+    \end{abstract}
+
+    \section{Basic Code Blocks}
+    
+\end{document}

@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage[polish]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage[table,xcdraw,dvipsnames]{xcolor}
+\usepackage{hhline}
+\usepackage{placeins}
+\usepackage[margin=0.6in]{geometry}
+\usepackage{colortbl}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage[shortlabels]{enumitem}
+\usetikzlibrary{calc}
+
+\DeclareDocumentCommand{\hcancel}{mO{0pt}O{0pt}O{0pt}O{0pt}}{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    }%
+}%
+
+\newcommand{\pd}[1]{\partial_{#1}}
+
+\title{Questions to Alex}
+% \author{Kacper Cybiński}
+% \newdate{date}{28}{01}{2022}
+% \date{\displaydate{date}}
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    Matrix $H$ has the form:
+    \[
+        H = \mqty[0 & 0 & v & w e^{-ik} \\ 0 & 0 & w & v \\ v & w & 0 & 0 \\ w e^{ik} & v &0 &0] = \mqty[0 & h^\dagger \\ h & 0]
+    \]
+    The $h$ matrix has the form:
+    \[
+        h = \left(
+            \begin{array}{cc}
+             v & w \\
+             \text{we}^{i k} & v \\
+            \end{array}
+            \right)    
+    \]
+    For our calculations we want to verify the equality of two winding number formulas:
+    \[
+            \mathcal{W} = \oint \frac{\dd{k}}{2 \pi i} \tr \qty[h^{-1} \pd{k} h] = \sum_{j=1}^{\mathcal{D}/2} \oint \frac{\dd{k}}{2 \pi i} \pd{k} \log{h_j}
+    \]
+    Hence, let's first calculate quantity $\tr \qty[h^{-1} \pd{k} h]$. The components are as follow:
+    \[
+            h^{-1} = \frac{1}{v^2 - w^2 e^{ik}} \mqty[v & -w \\ -w e^(i k) & v] \qc \pd{k} = \left[
+                \begin{array}{cc}
+                 0 & 0 \\
+                 i e^{i k} w & 0 \\
+                \end{array}
+                \right]
+    \]
+    Therefore:
+    \[
+                h^{-1} \pd{k} h = \left(
+                    \begin{array}{cc}
+                     -\frac{i e^{i k} w^2}{v^2-e^{i k} w^2} & 0 \\
+                     \frac{i e^{i k} v w}{v^2-e^{i k} w^2} & 0 \\
+                    \end{array}
+                    \right) \implies \tr \qty[
+                        \begin{array}{cc}
+                         -\frac{i e^{i k} w^2}{v^2-e^{i k} w^2} & 0 \\
+                         \frac{i e^{i k} v w}{v^2-e^{i k} w^2} & 0 \\
+                        \end{array}
+                        ] = -\frac{i w^2 e^{i k} }{v^2-e^{i k} w^2}
+    \]
+    And the second component is:
+    \[
+        \pd{k}\log{h} = \frac{i w e^{i k}}{v+e^{i k} w}
+    \]
+\end{document}

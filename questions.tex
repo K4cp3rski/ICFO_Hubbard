@@ -1,0 +1,60 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage[polish]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage[table,xcdraw,dvipsnames]{xcolor}
+\usepackage{hhline}
+\usepackage{placeins}
+\usepackage[margin=0.6in]{geometry}
+\usepackage{colortbl}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage[shortlabels]{enumitem}
+\usetikzlibrary{calc}
+
+\DeclareDocumentCommand{\hcancel}{mO{0pt}O{0pt}O{0pt}O{0pt}}{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    }%
+}%
+
+\newcommand{\pd}[1]{\partial_{#1}}
+
+\title{Questions to Alex}
+% \author{Kacper Cybiński}
+% \newdate{date}{28}{01}{2022}
+% \date{\displaydate{date}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+    Our questions are:
+    \begin{enumerate}
+        \item
+        Is $A_j = B_{j} + 1$ or maybe we can formulate it as $A_j = B_j$? If no, then from our hand calculations element $$h=ve^{ik}+we^{-ik} \neq v + we^{-ik}$$
+        \item 
+        If we put PBC, we can calculate the winding number using infinity trick, but the we don't have edge states we want to feed our machine with. Is this a problem?
+        \item 
+        When we add disorder, should we show to the machine singular realizations, or an image averaged out pver i.e. 10 realizations.
+        \item
+        If we average out the image, should assigned winding number also be an average over realizations winding numbers?
+        \item 
+        If we end up with non-integer winding numbers, how should we assing labels? Round up to nearest integer?
+        \item 
+        After calculations we ended up with $$\tr(h^{-1} \pd{k} h) = -\frac{i b^2}{b^2 - a^2 e^{ik}} \neq \pd{k} \log\qty(v + we^{-ik}) = -\frac{i w}{w + ve^{ik}}\, ,$$ what would mean that $$w = b^2 \qc v = -a^2 $$
+    \end{enumerate}
+\end{document}
